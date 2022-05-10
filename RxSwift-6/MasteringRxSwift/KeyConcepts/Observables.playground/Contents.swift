@@ -28,5 +28,25 @@ import RxSwift
  # Observables
  */
 
+let ob1 = Observable<Int>.create { (observer) -> Disposable in
+  observer.on(.next(0))
+  observer.onNext(1)
+  observer.onCompleted()
+  return Disposables.create()
+}
+
+ob1.subscribe {
+  print($0)
+  if let elem = $0.element {
+    print(elem)
+  }
+}
+
+ob1.subscribe(onNext: { elem in
+  print(elem)
+})
 
 
+Observable
+  .from([0, 1])
+  

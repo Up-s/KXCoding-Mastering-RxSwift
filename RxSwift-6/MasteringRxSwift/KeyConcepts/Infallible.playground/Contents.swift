@@ -44,6 +44,15 @@ let observable = Observable<String>.create { observer in
 }
 
 
+// error 를 방출하지 않음
+// 
+let infallible = Infallible<String>.create { observer in
+  observer(.next("Hello"))
+  observer(.completed)
+  return Disposables.create()
+}
+
+
 
 
 
